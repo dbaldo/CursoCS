@@ -1,1 +1,1 @@
-"# Exerc¡cios do Curso de C# - Dextraining" 
+Curso de C# - Dextraining
