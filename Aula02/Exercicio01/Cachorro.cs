@@ -10,7 +10,7 @@ namespace Exercicio01
     {
         public override void FazerSom()
         {
-            Console.WriteLine("Cachorro {0} => Au! Au!", Nome);
+            Console.WriteLine("Cachorro {0} faz: Au! Au!", Nome);
         }
     }
 }
