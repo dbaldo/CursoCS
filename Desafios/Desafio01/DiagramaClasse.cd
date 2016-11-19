@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Desafio01.Conta">
+    <Position X="4.5" Y="2.25" Width="2.5" />
+    <Members>
+      <Field Name="_innerLancamentos" Hidden="true" />
+    </Members>
+    <AssociationLine Name="Cliente" Type="Desafio01.ICliente">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.112" Y="0.141" Height="0.182" Width="0.732" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Lancamentos" Type="Desafio01.Lancamento" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.5" Y="4.294" />
+        <Point X="2.188" Y="4.294" />
+        <Point X="2.188" Y="3.988" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-1.44" Y="0.433" Height="0.182" Width="2.704" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAQAEAAAAAACAAAAAAAAAEAAAAAIAAAABIAA=</HashCode>
+      <FileName>Conta.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Cliente" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Lancamentos" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Desafio01.PessoaFisica">
+    <Position X="8" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAQAAAAAAAAAAAACAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>PessoaFisica.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Desafio01.PessoaJuridica">
+    <Position X="8" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAIAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>PessoaJuridica.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Desafio01.Poupanca">
+    <Position X="1" Y="5" Width="2.75" />
+    <Members>
+      <Method Name="AcrescerJuros" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAIAA=</HashCode>
+      <FileName>Poupanca.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Desafio01.ContaCorrente">
+    <Position X="4.75" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ContaCorrente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Desafio01.ContaSalario">
+    <Position X="8" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ContaSalario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Desafio01.Lancamento">
+    <Position X="1" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAABAAAAABAAAAAAQ=</HashCode>
+      <FileName>Lancamento.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Tipo" />
+    </ShowAsAssociation>
+  </Struct>
+  <Interface Name="Desafio01.ICliente">
+    <Position X="5.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ICliente.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Desafio01.TipoLancamento">
+    <Position X="1" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAEAAAgAAAAAAA=</HashCode>
+      <FileName>TipoLancamento.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
