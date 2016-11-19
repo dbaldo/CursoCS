@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{F1
 	ProjectSection(SolutionItems) = preProject
 		..\Database\lavaDB.mdf = ..\Database\lavaDB.mdf
 		..\Database\lavaDB_log.ldf = ..\Database\lavaDB_log.ldf
+		..\Database\script.sql = ..\Database\script.sql
 	EndProjectSection
 EndProject
 Global
