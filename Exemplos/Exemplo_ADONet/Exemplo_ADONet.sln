@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exemplo_ADONet", "Exemplo_A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{F1FD816F-4DDB-449B-B532-D4D5A688DB99}"
 	ProjectSection(SolutionItems) = preProject
-		..\Database\lavaDB.mdf = ..\Database\lavaDB.mdf
-		..\Database\lavaDB_log.ldf = ..\Database\lavaDB_log.ldf
 		..\Database\script.sql = ..\Database\script.sql
 	EndProjectSection
 EndProject
