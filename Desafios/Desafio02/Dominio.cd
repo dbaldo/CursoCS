@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Desafio02.Veiculo">
+    <Position X="4.25" Y="2.25" Width="1.75" />
+    <AssociationLine Name="Modelo" Type="Desafio02.Modelo">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.018" Y="0.423" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAgAAAAAAAAAEAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Veiculo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Modelo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Desafio02.Lavagem">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAgAAAAAAAEAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Lavagem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Servico" />
+      <Property Name="Categoria" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Desafio02.EntradaSaida">
+    <Position X="8" Y="0.5" Width="2" />
+    <AssociationLine Name="Operador" Type="Desafio02.Operador">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.217" Y="0.297" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAECAQAAQAAAAAAAAAAAAAQAAAAAAAAAAAEQAAAAIAA=</HashCode>
+      <FileName>Entrada.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Veiculo" />
+      <Property Name="Lavagem" />
+      <Property Name="Operador" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Desafio02.Operador">
+    <Position X="8.5" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAQAAEAAAA=</HashCode>
+      <FileName>Operador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Desafio02.Marca">
+    <Position X="0.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Marca.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Desafio02.Modelo">
+    <Position X="5.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Modelo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Marca" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="Desafio02.Categoria">
+    <Position X="0.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAQAAgAAAAAAAAAA=</HashCode>
+      <FileName>Categoria.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Desafio02.TipoServico">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TipoServico.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
