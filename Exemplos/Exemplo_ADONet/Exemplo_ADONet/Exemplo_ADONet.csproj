@@ -53,6 +53,7 @@
     <Compile Include="Dominio\TipoServico.cs" />
     <Compile Include="Dominio\Veiculo.cs" />
     <Compile Include="Repositorio\RepositorioMarca.cs" />
+    <Compile Include="Repositorio\RepositorioOperador.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
