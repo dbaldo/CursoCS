@@ -1,15 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BankSystem.Core
 {
-    public class ContaBancaria
+    public abstract class ContaBancaria
     {
+        private readonly List<Lancamento> _listLancamentos = new List<Lancamento>();
 
-        public ContaBancaria(Cliente cliente, int numConta, int numAgencia )
+        public ContaBancaria(Cliente cliente, int numConta, int numAgencia)
         {
             this.ClienteDaConta = cliente;
             this.NumeroAgencia = numAgencia;
@@ -46,32 +45,42 @@ namespace BankSystem.Core
             set;
         }
 
-        public void Debitar(decimal valor, string historico)
+        public IEnumerable<Lancamento> Extrato
+        {
+            get
+            {
+                return _listLancamentos;
+            }
+        }
+
+        protected void Debitar(TipoLancamento tipo, decimal valor, string historico)
         {
 
             CheckBloqueio();
             CheckValor(valor);
 
             if (Saldo < valor)
-                throw new InvalidOperationException("Conta sem Saldo");
+                throw new InvalidOperationException("Saldo Insuficiente");
 
+            GravarLancamento(tipo, valor, historico);
 
             this.Saldo -= valor;
         }
 
-
-        public void Creditar(decimal valor, string historico)
+        protected void Creditar(TipoLancamento tipo, decimal valor, string historico)
         {
             CheckBloqueio();
             CheckValor(valor);
+
+            GravarLancamento(tipo, valor, historico);
 
             this.Saldo += valor;
         }
 
         public void Transferir(ContaBancaria outraconta, decimal valor)
         {
-            this.Debitar(valor, String.Format("TRANSF PARA {0}-{1}", outraconta.NumeroAgencia, outraconta.NumeroConta));
-            outraconta.Creditar(valor, String.Format("TRANSF DE {0}-{1}", this.NumeroAgencia, this.NumeroConta));
+            this.Debitar(TipoLancamento.Transferencia, valor, String.Format("TRANSF PARA {0}-{1}", outraconta.NumeroAgencia, outraconta.NumeroConta));
+            outraconta.Creditar(TipoLancamento.Transferencia, valor, String.Format("TRANSF DE {0}-{1}", this.NumeroAgencia, this.NumeroConta));
         }
 
         private void CheckValor(decimal valor)
@@ -84,6 +93,11 @@ namespace BankSystem.Core
         {
             if (Bloqueada)
                 throw new InvalidOperationException("Conta Bloqueada");
+        }
+
+        private void GravarLancamento(TipoLancamento tipo, decimal valor, string historico)
+        {
+            _listLancamentos.Add(new Lancamento() { Data = DateTime.Now, Historico = historico, Tipo = tipo, Valor = valor });
         }
     }
 }

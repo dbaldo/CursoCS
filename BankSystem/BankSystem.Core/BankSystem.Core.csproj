@@ -42,6 +42,9 @@
   <ItemGroup>
     <Compile Include="ContaBancaria.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="ContaCorrente.cs" />
+    <Compile Include="ContaPoupanca.cs" />
+    <Compile Include="Lancamento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
