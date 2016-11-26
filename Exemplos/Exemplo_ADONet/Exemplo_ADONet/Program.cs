@@ -95,7 +95,7 @@ namespace Exemplo_ADONet
 
         }
 
-        private static void MenuInserirOperador()
+        private static int MenuInserirOperador()
         {
             var repos = new RepositorioOperador();
 
@@ -106,7 +106,14 @@ namespace Exemplo_ADONet
             Console.Write("Digite o login ");
             string login = Console.ReadLine();
 
-            repos.InserirOperador(new Operador() { Nome = nome, Login = login });
+            var op = new Operador() { Nome = nome, Login = login };
+
+            repos.InserirOperador(op);
+
+            op.Nome += "(1)";
+            repos.AlterarOperador(op);
+            
+            return op.Id;
         }
 
 
