@@ -62,7 +62,7 @@ namespace BankSystem.Core
             if (Saldo < valor)
                 throw new InvalidOperationException("Saldo Insuficiente");
 
-            GravarLancamento(tipo, valor, historico);
+            GravarLancamento(tipo, -valor, historico);
 
             this.Saldo -= valor;
         }
@@ -79,6 +79,11 @@ namespace BankSystem.Core
 
         public void Transferir(ContaBancaria outraconta, decimal valor)
         {
+            if (outraconta.Bloqueada)
+            {
+                throw new InvalidOperationException("Conta Destino Bloqueada");
+            }
+
             this.Debitar(TipoLancamento.Transferencia, valor, String.Format("TRANSF PARA {0}-{1}", outraconta.NumeroAgencia, outraconta.NumeroConta));
             outraconta.Creditar(TipoLancamento.Transferencia, valor, String.Format("TRANSF DE {0}-{1}", this.NumeroAgencia, this.NumeroConta));
         }

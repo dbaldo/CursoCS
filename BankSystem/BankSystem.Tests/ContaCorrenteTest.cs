@@ -22,7 +22,7 @@ namespace BankSystem.Tests
 
 
         [TestMethod]
-        public void QuandoDepositar_DeveCreditarSaldo()
+        public void ContaCorrente_QuandoDepositar_DeveCreditarSaldo()
         {
             //Arrange
             var conta = new ContaCorrente(ClienteDeTeste, 1, 1001);
@@ -38,7 +38,7 @@ namespace BankSystem.Tests
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException), "Conta Bloqueada")]
-        public void QuandoDepositarContaBloqueada_LancarExcecao()
+        public void ContaCorrente_QuandoDepositarContaBloqueada_LancarExcecao()
         {
             //Arrange
             var conta = new ContaCorrente(ClienteDeTeste, 1, 1001);
@@ -50,7 +50,7 @@ namespace BankSystem.Tests
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException), "Conta Bloqueada")]
-        public void QuandoSacarContaBloqueada_LancarExcecao()
+        public void ContaCorrente_QuandoSacarContaBloqueada_LancarExcecao()
         {
             //Arrange
             var conta = new ContaCorrente(ClienteDeTeste, 1, 1001);
@@ -61,22 +61,47 @@ namespace BankSystem.Tests
             conta.Sacar(50);
         }
 
-        [Ignore]
         [TestMethod]
-        public void QuandoSacar_DeveDebitarSaldo()
+        public void ContaCorrente_QuandoSacar_DeveDebitarSaldo()
         {
             //ARRANGE
+            var conta = new ContaCorrente(ClienteDeTeste, 1, 1002);
+            conta.Depositar(1000);
+
             //ACT
+            conta.Sacar(999);
+
             //ASSERT
+            Assert.AreEqual(1, conta.Saldo);
+            Assert.AreEqual(TipoLancamento.Saque, conta.Extrato.Last().Tipo);
+            Assert.AreEqual(-999, conta.Extrato.Last().Valor);
         }
 
-        [Ignore]
         [TestMethod]
-        public void QuandoTentarSacarSemSaldo_DeveLancarExcecao()
+        public void ContaCorrente_QuandoPagar_DeveDebitarSaldo()
         {
             //ARRANGE
+            var conta = new ContaCorrente(ClienteDeTeste, 1, 1002);
+            conta.Depositar(100);
+
             //ACT
+            conta.Pagar(100);
+
             //ASSERT
+            Assert.AreEqual(0, conta.Saldo);
+            Assert.AreEqual(TipoLancamento.Pagamento, conta.Extrato.Last().Tipo);
+            Assert.AreEqual(-100, conta.Extrato.Last().Valor);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException), "Saldo Insuficiente")]
+        public void ContaCorrente_QuandoTentarSacarSemSaldo_DeveLancarExcecao()
+        {
+            //ARRANGE
+            var conta = new ContaCorrente(ClienteDeTeste, 1, 1003);
+
+            //ACT
+            conta.Sacar(1);
         }
 
         [TestMethod]
@@ -85,6 +110,7 @@ namespace BankSystem.Tests
             //ARRANGE
             var conta1 = new ContaCorrente(ClienteDeTeste, 1, 1);
             var conta2 = new ContaCorrente(ClienteDeTeste, 2, 1);
+            conta1.Depositar(50);
 
             //ACT
             conta1.Transferir(conta2, 50);
@@ -98,8 +124,49 @@ namespace BankSystem.Tests
 
             Assert.AreEqual(TipoLancamento.Transferencia, conta2.Extrato.Last().Tipo);
             Assert.AreEqual(+50, conta2.Extrato.Last().Valor);
-
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException), "Conta Bloqueada")]
+        public void ContaCorrente_QuandoTransfereParaContaBloqueada()
+        {
+            //ARRANGE
+            var conta1 = new ContaCorrente(ClienteDeTeste, 1, 1);
+            var conta2 = new ContaPoupanca(ClienteDeTeste, 2, 1);
+            conta1.Depositar(100);
+            conta1.Bloqueada = true;
+
+            //ACT
+            conta1.Transferir(conta2, 50);
+        }
+
+
+        [TestMethod]
+        public void ContaCorrente_QuandoTransfereParaContaPoupancaBloqueada()
+        {
+            //ARRANGE
+            var conta1 = new ContaCorrente(ClienteDeTeste, 1, 1);
+            var conta2 = new ContaPoupanca(ClienteDeTeste, 2, 1);
+            
+            conta1.Depositar(100);
+            conta2.Bloqueada = true;
+
+            //ACT
+            try
+            {
+                conta1.Transferir(conta2, 50);
+            }
+            catch(InvalidOperationException e)
+            {
+                Assert.AreEqual("Conta Destino Bloqueada", e.Message);
+            }
+
+            Assert.AreEqual(100, conta1.Saldo);
+            Assert.AreEqual(0, conta2.Saldo);
+            
+        }
+
+
 
     }
 }

@@ -14,14 +14,15 @@
 
         public void Resgatar(decimal valor)
         {
-            Creditar(TipoLancamento.Resgate, valor, "RESGATE POUP");
+            Debitar(TipoLancamento.Resgate, valor, "RESGATE POUP");
         }
 
         public void AcrescentarJuros(decimal juros)
         {
-            var calculoJuros = (Saldo * (1m + juros));
+            var calculoJuros = (Saldo * juros);
 
-            Creditar(TipoLancamento.Juros, (Saldo * (1m + juros)), "JUROS");
+            Creditar(TipoLancamento.Juros, calculoJuros, "JUROS");
+
         }
 
     }
